@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div id="mainContent">
+      <div id="navBar">
+        <a href="./index.html"><h2>Home</h2></a>
+        <a href="./doctorDashboard.html"><h2>Doctor's Dashboard</h2></a>
+        <a href="./appointment.html"><h2>Book Appointments</h2></a>
+      </div>
+      <div id="head">
+        <div class="form-box">
+          <div class="button-box">
+            <div id="btn"></div>
+            <button class="toggle-btn" onclick="login()" )>Login</button>
+            <button class="toggle-btn" onclick="register()">Register</button>
+          </div>
+
+          <div class="input-group" id="login">
+            <input
+              type="email"
+              class="input-field"
+              id="login-email"
+              placeholder="Enter your Email"
+              required
+            />
+            <input
+              type="password"
+              class="input-field"
+              id="login-password"
+              placeholder="Enter your Password"
+              required
+            />
+            <input type="submit" value="Login" id="loginBtn" />
+          </div>
+
+          <div class="input-group" id="register">
+            <input
+              type="text"
+              class="input-field"
+              id="register-username"
+              placeholder="Username"
+              required
+            />
+            <input
+              type="email"
+              class="input-field"
+              id="register-email"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="password"
+              class="input-field"
+              id="register-password"
+              placeholder="Password"
+              required
+            />
+            <input
+              type="password"
+              class="input-field"
+              id="repeat-password"
+              placeholder="Repeat password"
+              required
+            />
+            <span
+              ><input type="checkbox" class="input-field" id="doctor" /> Are you
+              a doctor?</span
+            >
+            <input type="submit" value="Register" id="registerBtn" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./scripts/main.js"></script>
+  <script>
+    let x = document.getElementById("login");
+    let y = document.getElementById("register");
+    let z = document.getElementById("btn");
+
+    function register() {
+      // x.style.backgroundColor="black"
+      // y.style.backgroundColor="white"
+      x.style.left = "-400px";
+      y.style.left = "50px";
+      z.style.left = "110px";
+    }
+
+    function login() {
+      // x.style.backgroundColor="white"
+      // y.style.backgroundColor="black"
+      x.style.left = "50px";
+      y.style.left = "450px";
+      z.style.left = "0px";
+    }
+  </script>
+</html>

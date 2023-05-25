@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mainContent">
+        <!-- Append the data from the javascript -->
+    </div>
+</body>
+<script>
+    let mainContent = document.getElementById('mainContent');
+    function renderCard(id,name,image,specification,experience,location,date,slots,fee){
+        return (
+            `<div data-set=${id}>
+                <img src=${image} alt="">
+                <h2>${name}</h2>
+                <p>Specification : ${specification}</p>
+                <p>Experience : ${experience}</p>
+                <p>Location : ${location}</p>
+                <p>Date : ${Date.now}</p>
+                <p>Slots : ${slots}</p>
+                <p>Fee : ${fee}</p>
+                <button data-set=${id}>BOOK NOW</button>
+            </div>`
+        )
+    }
+
+
+    function rederAll(data){
+        mainContent.innerHTML = null;
+        mainContent.innerHTML = data.map(e => renderCard(e.id,e.name,e.image,e.specification,e.experience,e.location,e.date,e.slots,e.fee))
+    }
+
+    fetch('http://localhost:8080/doctor')
+    .then((res)=>{
+        return res.json()
+    })
+    .then((data)=>{
+        rederAll(data)
+    })
+</script>
+</html>

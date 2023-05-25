@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "username": "a",
+      "email": "a@gmail.com",
+      "password": "a",
+      "isDoctor": false,
+      "id": 1
+    },
+    {
+      "username": "Abhijeet",
+      "email": "abhijeet@gmail,com",
+      "password": "Abhijeet",
+      "isDoctor": true,
+      "id": 2
+    }
+  ],
+  "appointments": [],
+  "doctor": [
+    {
+      "name": "Abhijeet",
+      "image": "",
+      "specification": "Cardiologist",
+      "experience": "5",
+      "location": "Gaya",
+      "date": "2023-05-17",
+      "slots": "2",
+      "fees": "500",
+      "id": 1
+    },
+    {
+      "name": "Anand",
+      "image": "",
+      "specification": "Dermatologist",
+      "experience": "6",
+      "location": "Chapra",
+      "date": "2023-05-01",
+      "slots": "1",
+      "fees": "100",
+      "id": 2
+    }
+  ]
+}

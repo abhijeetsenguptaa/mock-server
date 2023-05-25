@@ -1,0 +1,60 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+#navBar{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 2%;
+}
+
+#head{
+    margin: 0 auto;
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+}
+
+/* input{
+    display: block;
+} */
+
+.form-box{
+    border: 1px solid black;
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 20px;
+    backdrop-filter: blur(9px);
+}
+
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+}
+
+.toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+
+}
+input{
+    display: block;
+    width: 100%;
+    margin: 2%;
+    padding: 3%;
+}
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        display: block;
+        margin: 1%;
+      }
+      select {
+        margin: 1%;
+      }
+      #myForm {
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainContent">
+      <form id="myForm">
+        <input type="text" id="name" placeholder="Name" />
+        <input type="url" id="imageUrl" placeholder="Image URL" />
+        <select id="specification">
+          <option value="">Choose your Specification</option>
+          <option value="Cardiologist">Cardiologist</option>
+          <option value="Dermatologist">Dermatologist</option>
+          <option value="Pediatrician">Pediatrician</option>
+          <option value="Psychiatrist">Psychiatrist</option>
+        </select>
+        <input type="number" id="experience" placeholder="Experience" />
+        <input type="text" id="location" placeholder="Location" />
+        <input type="Date" id="date" />
+        <input type="number" id="slots" placeholder="Slots" />
+        <input type="number" id="fees" placeholder="Fees" />
+        <input type="submit" value="Submit" />
+      </form>
+
+      <div id="tables">
+        <thead>
+          <tr>
+            <b>Name of the Doctor</b>
+            <b>Specification</b>
+            <b>Experience</b>
+            <b>Location</b>
+            <b>Slots</b>
+            <b>Edit</b>
+            <b>Delete</b>
+            <b>Appointments</b>
+          </tr>
+        </thead>
+        <tbody id="mainContentX">
+          <!-- Append the data from the JS-->
+        </tbody>
+      </div>
+    </div>
+  </body>
+  <script>
+    let mainContentX = document.getElementById("mainContentX");
+    let myForm = document.getElementById("myForm");
+
+    myForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let obj = {
+        name: myForm.name.value,
+        image: myForm.imageUrl.value,
+        specification: myForm.specification.value,
+        experience: myForm.experience.value,
+        location: myForm.location.value,
+        date: myForm.date.value,
+        slots: myForm.slots.value,
+        fees: myForm.fees.value,
+      };
+
+      fetch("http://localhost:8080/doctor", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+    });
+
+    function fetchData() {
+      fetch("http://localhost:8080/doctor")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          renderAllRows(data);
+        });
+    }
+
+    fetchData()
+
+    function renderOneRow(
+      id,
+      name,
+      specification,
+      experience,
+      location,
+      slots
+    ) {
+      return `<tr data-set=${id}>
+                <td>${name}</td>
+                <td>${specification}</td>
+                <td>${experience}</td>
+                <td>${location}</td>
+                <td>${slots}</td>
+                <td data-set=${id}>EDIT</td>
+                <td data-set=${id}>DELETE</td>
+                <td data-set=${id}>APPOINTMENT</td>
+            </tr>`;
+    }
+
+    function renderAllRows(data) {
+      mainContentX.innerHTML = null;
+
+      mainContentX.innerHTML = data.map((e) =>
+        renderOneRow(
+          e.id,
+          e.name,
+          e.specification,
+          e.experience,
+          e.location,
+          e.slots
+        )
+      );
+    }
+  </script>
+</html>
